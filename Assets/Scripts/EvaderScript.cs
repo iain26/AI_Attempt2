@@ -13,22 +13,37 @@ public class EvaderScript : MonoBehaviour {
     public GameManagerScript gms;
 
     public PathfindingScript pfs;
+    [SerializeField]
     private List<Vector2> pathToTravel = new List<Vector2>();
-
     Vector2 start;
     Vector2 pointCurrent;
+
+
+    GameObject nextCollect;
+
+    bool deposit = false;
 
     float ForceX = 0f;
     float ForceY = 0f;
     public bool canJump = true;
     bool jumped = false;
 
-    // Use this for initialization
+    public List<GameObject> collectables = new List<GameObject>();
+
     void Start()
     {
         pathToTravel.Add(transform.position);
         pointCurrent = pathToTravel[0];
         whatIsGround = 1 << LayerMask.NameToLayer("Floor");
+        float distCollect = float.MaxValue;
+        foreach (GameObject drop in collectables)
+        {
+            if (distCollect > Vector2.Distance(transform.position, drop.transform.position))
+            {
+                distCollect = Vector2.Distance(transform.position, drop.transform.position);
+                nextCollect = drop;
+            }
+        }
     }
 
     void Movement()
@@ -40,12 +55,7 @@ public class EvaderScript : MonoBehaviour {
         {
             rb.AddForce(new Vector2(ForceX, rb.velocity.y + ForceY));
         }
-    }
-
-    private void FixedUpdate()
-    {
-        Movement();
-        if (gms.GetEvaderGridPos() != gms.collectable[0])
+        if (gms.GetEvaderGridPos() != new Vector2(nextCollect.transform.position.x, nextCollect.transform.position.y))
         {
             if (pointCurrent.x > transform.position.x)
             {
@@ -71,7 +81,7 @@ public class EvaderScript : MonoBehaviour {
         }
         else
         {
-            float dist = Vector2.Distance(gms.GetEvaderGridPos(), transform.position);
+            float dist = Vector2.Distance(new Vector2(nextCollect.transform.position.x, nextCollect.transform.position.y), transform.position);
             if (dist < 0.5f)
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
@@ -88,6 +98,11 @@ public class EvaderScript : MonoBehaviour {
         }
     }
 
+    private void FixedUpdate()
+    {
+        Movement();
+    }
+
     bool GroundCheck()
     {
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
@@ -100,38 +115,64 @@ public class EvaderScript : MonoBehaviour {
         yield return 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (canJump)
+        float distCollect = float.MaxValue;
+        foreach (GameObject drop in collectables)
         {
-            //rb.velocity = new Vector2(rb.velocity.x, 0);
-        }
-        if (gms.GetEvaderGridPos() != gms.collectable[0])
-        {
-            if (start != gms.GetEvaderGridPos())
+            if (distCollect > Vector2.Distance(transform.position, drop.transform.position))
             {
-                start = gms.GetEvaderGridPos();
-                pathToTravel = pfs.AStarSearch(gms.GetEvaderGridPos(), gms.collectable[0], Color.green);
-                print(gms.GetEvaderGridPos());
-                pointCurrent = pathToTravel[0];
-                float dist = Vector2.Distance(pointCurrent, transform.position);
-                if (dist < 0.15f)
-                {
-                    pointCurrent = pathToTravel[0];
-                }
+                distCollect = Vector2.Distance(transform.position, drop.transform.position);
+                nextCollect = drop;
             }
         }
-        else
+        //if (!deposit)
         {
-            print("Target Reached!!!");
+            if (gms.GetEvaderGridPos() != new Vector2(nextCollect.transform.position.x, nextCollect.transform.position.y))
+            {
+                print(start);
+                if (start != gms.GetEvaderGridPos())
+                {
+                    start = gms.GetEvaderGridPos();
+                    pathToTravel = pfs.AStarSearch(gms.GetEvaderGridPos(), new Vector2(nextCollect.transform.position.x, nextCollect.transform.position.y), Color.blue);
+                    pointCurrent = pathToTravel[0];
+                    float dist = Vector2.Distance(pointCurrent, transform.position);
+                    if (dist < 0.15f)
+                    {
+                        pointCurrent = pathToTravel[0];
+                    }
+                }
+            }
+            else
+            {
+                collectables.Remove(nextCollect);
+                nextCollect.SetActive(false);
+                deposit = true;
+                print("Collectable Reached!!!");
+            }
         }
+        //else
+        //{
+        //    if (gms.GetEvaderGridPos() != new Vector2(-1.5f, -1f))
+        //    {
+        //        if (start != gms.GetEvaderGridPos())
+        //        {
+        //            start = gms.GetEvaderGridPos();
+        //            pathToTravel = pfs.AStarSearch(gms.GetEvaderGridPos(), new Vector2(-1.5f, -1f), Color.blue);
+        //            pointCurrent = pathToTravel[0];
+        //            float dist = Vector2.Distance(pointCurrent, transform.position);
+        //            if (dist < 0.15f)
+        //            {
+        //                pointCurrent = pathToTravel[0];
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        deposit = false;
+        //        print("Deposit Reached!!!");
+        //    }
+        //}
         canJump = GroundCheck();
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            if (canJump)
-                rb.AddForce(new Vector2(0, 350f));
-        }
     }
 }

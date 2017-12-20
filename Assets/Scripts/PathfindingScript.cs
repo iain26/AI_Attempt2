@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PathfindingScript : MonoBehaviour {
 
-    public static List<Vector2> traversablePoints = new List<Vector2>();
+    public List<Vector2> traversablePoints = new List<Vector2>();
     public GameObject grid;
 
     public Vector2 startPoint;
@@ -20,18 +20,14 @@ public class PathfindingScript : MonoBehaviour {
     Dictionary<Vector2, float> h = new Dictionary<Vector2, float>();
     Dictionary<Vector2, float> f = new Dictionary<Vector2, float>();
 
-    public enum PathfindSearch { dStar, aStar, BFS };
-    public enum Heuristic { Euclidean, Manhattan , Chebyshev };
 
-    delegate float HeuristicDist(float x1, float y1, float x2, float y2);
-    HeuristicDist HToUse;
+    Dictionary<Vector2, Vector2> parentsE = new Dictionary<Vector2, Vector2>();
+    Dictionary<Vector2, float> gE = new Dictionary<Vector2, float>();
+    Dictionary<Vector2, float> hE = new Dictionary<Vector2, float>();
+    Dictionary<Vector2, float> fE = new Dictionary<Vector2, float>();
 
-    public PathfindSearch pathfindSearch = PathfindSearch.aStar;
-    public Heuristic heuristic;
-    
     public List<Vector2> pathCheck = new List<Vector2>();
-
-    int upAmount = 0;
+    
 
     public GameManagerScript gms;
 
@@ -45,61 +41,8 @@ public class PathfindingScript : MonoBehaviour {
                 traversablePoints.Add(grid.transform.GetChild(count).position);
         }
 
-        startPoint = traversablePoints[startIndex];
-
-        //startPoint = gms.GetChaserGridPos();
-        endPoint = traversablePoints[endIndex];
-
-        //switch (heuristic)
-        //{
-        //    case Heuristic.Euclidean:
-        //        HToUse = EuclideanDistanceHeuristic;
-        //        break;
-        //    case Heuristic.Manhattan:
-        //        HToUse = ManhattanHeuristic;
-        //        break;
-        //    case Heuristic.Chebyshev:
-        //        HToUse = ChebyshevHeuristic;
-        //        break;
-        //}
-
-        switch (pathfindSearch)
-        {
-            case PathfindSearch.aStar:
-                //pathCheck = AStarSearch(startPoint, endPoint/*, HToUse*/);
-                break;
-            case PathfindSearch.dStar:
-                break;
-            case PathfindSearch.BFS:
-                pathCheck = BreadthFirstSearch(startPoint, endPoint);
-                break;
-        }
-        //Debug.DrawLine(pathCheck[0], startPoint, Color.green, 1, false);
-
-        //print(CheckNeighbouringPoints(traversablePoints[96]).Count);
-
-        //print(path)
     }
-
-    //protected List<Vector2> BackTrackPath(Vector2 end)
-    //{
-    //    List<Vector2> path = new List<Vector2>();
-    //    if (end != null)
-    //    {
-    //        path.Add(end);
-    //        float green = 0f;
-    //        while (parents[end] != startPoint)
-    //        {
-    //            path.Add(parents[end]);
-    //            Debug.DrawLine(end, parents[end], new Color(255f - green, green, 0),1,false);
-    //            end = parents[end];
-    //            green += 255f / (float)path.Count;
-    //        }
-    //        // Reverse the path so the start node is at index 0
-    //        path.Reverse();
-    //    }
-    //    return path;
-    //}
+    
 
     protected List<Vector2> BackTrackPath(Vector2 end, Color color)
     {
@@ -107,16 +50,34 @@ public class PathfindingScript : MonoBehaviour {
         if (end != null)
         {
             path.Add(end);
-            float green = 0f;
             while (parents[end] != startPoint)
             {
                 path.Add(parents[end]);
                 Debug.DrawLine(end, parents[end], color, 1, false);
                 end = parents[end];
-                green += 255f / (float)path.Count;
             }
             // Reverse the path so the start node is at index 0
             path.Reverse();
+            parents.Clear();
+        }
+        return path;
+    }
+
+    protected List<Vector2> BackTrackPathE(Vector2 end, Color color)
+    {
+        List<Vector2> path = new List<Vector2>();
+        if (end != null)
+        {
+            path.Add(end);
+            while (parentsE[end] != startPoint)
+            {
+                path.Add(parentsE[end]);
+                Debug.DrawLine(end, parentsE[end], color, 1, false);
+                end = parentsE[end];
+            }
+            // Reverse the path so the start node is at index 0
+            path.Reverse();
+            parentsE.Clear();
         }
         return path;
     }
@@ -263,10 +224,11 @@ public class PathfindingScript : MonoBehaviour {
     public List<Vector2> AStarSearch(Vector2 start, Vector2 end, Color color/*, HeuristicDist hToUse*/)
     {
 
-        parents.Clear();
+
         f.Clear();
         g.Clear();
         h.Clear();
+        
 
         List<Vector2> openList = new List<Vector2>();
         List<Vector2> closedList = new List<Vector2>();
@@ -279,26 +241,10 @@ public class PathfindingScript : MonoBehaviour {
             ////openList.Sort();
             Vector2 checkFVector = startPoint;
             float checkF = float.MaxValue;
-            Vector2 checkXVector = startPoint;
-            float checkX = float.MaxValue;
+            //Vector2 checkXVector = startPoint;
+            //float checkX = float.MaxValue;
             foreach (Vector2 point in openList)
             {
-                //if(end.x > current.x)
-                //{
-                //    if(point.x < checkX)
-                //    {
-                //        checkX = point.x;
-                //        checkXVector = point;
-                //    }
-                //}
-                //if (end.x < current.x)
-                //{
-                //    if (point.x > checkX)
-                //    {
-                //        checkX = point.x;
-                //        checkXVector = point;
-                //    }
-                //}
                 if (f.ContainsKey(point))
                 {
                     if (f[point] < checkF)
@@ -310,8 +256,7 @@ public class PathfindingScript : MonoBehaviour {
             }
 
             current = checkFVector;
-
-            //Vector2 current = openList[0];
+            
 
             openList.Remove(current);
             closedList.Add(current);
@@ -325,7 +270,6 @@ public class PathfindingScript : MonoBehaviour {
             traversableNeighbours = CheckNeighbouringPoints(current);
 
             int numNeighbours = traversableNeighbours.Count;
-            //print(numNeighbours);
 
             float fConsistent = float.MaxValue;
             //int fIndex = 0;
@@ -352,7 +296,7 @@ public class PathfindingScript : MonoBehaviour {
                 {
                     g.Add(neighbourCurrent, gCostToNeigbour);
                     f[neighbourCurrent] = g[neighbourCurrent];
-                    h.Add(neighbourCurrent, /*hToUse*/ManhattanHeuristic(neighbourCurrent.x, neighbourCurrent.y, end.x, end.y));
+                    h.Add(neighbourCurrent, ManhattanHeuristic(neighbourCurrent.x, neighbourCurrent.y, end.x, end.y));
                     f[neighbourCurrent] += h[neighbourCurrent];
                     //finish Euclidean heuristic here^
                 }
@@ -372,117 +316,99 @@ public class PathfindingScript : MonoBehaviour {
         return null;
     }
 
-    //public List<Vector2> AStarSearchEvader(Vector2 start, Vector2 end/*, HeuristicDist hToUse*/)
-    //{
+    public List<Vector2> AStarSearchEvader(Vector2 start, Vector2 end, Color color/*, HeuristicDist hToUse*/)
+    {
 
-    //    parents.Clear();
-    //    f.Clear();
-    //    g.Clear();
-    //    h.Clear();
 
-    //    List<Vector2> openList = new List<Vector2>();
-    //    List<Vector2> closedList = new List<Vector2>();
+        fE.Clear();
+        gE.Clear();
+        hE.Clear();
 
-    //    openList.Add(start);
-    //    Vector2 current = start;
-    //    while (openList.Count > 0)
-    //    {
+        List<Vector2> openList = new List<Vector2>();
+        List<Vector2> closedList = new List<Vector2>();
 
-    //        ////openList.Sort();
-    //        Vector2 checkFVector = startPoint;
-    //        float checkF = float.MaxValue;
-    //        Vector2 checkXVector = startPoint;
-    //        float checkX = float.MaxValue;
-    //        foreach (Vector2 point in openList)
-    //        {
-    //            //if(end.x > current.x)
-    //            //{
-    //            //    if(point.x < checkX)
-    //            //    {
-    //            //        checkX = point.x;
-    //            //        checkXVector = point;
-    //            //    }
-    //            //}
-    //            //if (end.x < current.x)
-    //            //{
-    //            //    if (point.x > checkX)
-    //            //    {
-    //            //        checkX = point.x;
-    //            //        checkXVector = point;
-    //            //    }
-    //            //}
-    //            if (f.ContainsKey(point))
-    //            {
-    //                if (f[point] < checkF)
-    //                {
-    //                    checkF = f[point];
-    //                    checkFVector = point;
-    //                }
-    //            }
-    //        }
+        openList.Add(start);
+        Vector2 current = start;
+        while (openList.Count > 0)
+        {
 
-    //        current = checkFVector;
+            ////openList.Sort();
+            Vector2 checkFVector = startPoint;
+            float checkF = float.MaxValue;
+            //Vector2 checkXVector = startPoint;
+            //float checkX = float.MaxValue;
+            foreach (Vector2 point in openList)
+            {
+                if (fE.ContainsKey(point))
+                {
+                    if (fE[point] < checkF)
+                    {
+                        checkF = fE[point];
+                        checkFVector = point;
+                    }
+                }
+            }
 
-    //        //Vector2 current = openList[0];
+            current = checkFVector;
 
-    //        openList.Remove(current);
-    //        closedList.Add(current);
 
-    //        if (current == end)
-    //        {
-    //            return BackTrackPath(end);
-    //        }
+            openList.Remove(current);
+            closedList.Add(current);
 
-    //        List<Vector2> traversableNeighbours = new List<Vector2>();
-    //        traversableNeighbours = CheckNeighbouringPoints(current);
+            if (current == end)
+            {
+                return BackTrackPathE(end, color);
+            }
 
-    //        int numNeighbours = traversableNeighbours.Count;
-    //        //print(numNeighbours);
+            List<Vector2> traversableNeighbours = new List<Vector2>();
+            traversableNeighbours = CheckNeighbouringPoints(current);
 
-    //        float fConsistent = float.MaxValue;
-    //        //int fIndex = 0;
+            int numNeighbours = traversableNeighbours.Count;
 
-    //        for (int neighbourCurrentIndex = 0; neighbourCurrentIndex < numNeighbours; ++neighbourCurrentIndex)
-    //        {
-    //            Vector2 neighbourCurrent = traversableNeighbours[neighbourCurrentIndex];
-    //            if (closedList.Contains(neighbourCurrent))
-    //            {
-    //                continue;
-    //            }
-    //            //cost is distance as terrain is standard
-    //            float hEstCostToEnd = Vector2.Distance(neighbourCurrent, end);
-    //            float gCostToNeigbour = CostToPoint(current, neighbourCurrent);
-    //            fConsistent = gCostToNeigbour + hEstCostToEnd;
-    //            if (f.ContainsKey(neighbourCurrent))
-    //            {
-    //                f.Remove(neighbourCurrent);
-    //                g.Remove(neighbourCurrent);
-    //                h.Remove(neighbourCurrent);
-    //            }
-    //            f.Add(neighbourCurrent, float.MaxValue);
-    //            if (fConsistent <= (f[neighbourCurrent]) || !(openList.Contains(neighbourCurrent)))
-    //            {
-    //                g.Add(neighbourCurrent, gCostToNeigbour);
-    //                f[neighbourCurrent] = g[neighbourCurrent];
-    //                h.Add(neighbourCurrent, /*hToUse*/ManhattanHeuristic(neighbourCurrent.x, neighbourCurrent.y, end.x, end.y));
-    //                f[neighbourCurrent] += h[neighbourCurrent];
-    //                //finish Euclidean heuristic here^
-    //            }
-    //            else
-    //            {
-    //                continue;
-    //            }
+            float fConsistent = float.MaxValue;
+            //int fIndex = 0;
 
-    //            if (!(openList.Contains(neighbourCurrent)))
-    //            {
-    //                parents.Add(neighbourCurrent, current);
-    //                openList.Add(neighbourCurrent);
-    //            }
-    //        }
-    //    }
+            for (int neighbourCurrentIndex = 0; neighbourCurrentIndex < numNeighbours; ++neighbourCurrentIndex)
+            {
+                Vector2 neighbourCurrent = traversableNeighbours[neighbourCurrentIndex];
+                if (closedList.Contains(neighbourCurrent))
+                {
+                    continue;
+                }
+                //cost is distance as terrain is standard
+                float hEstCostToEnd = Vector2.Distance(neighbourCurrent, end);
+                float gCostToNeigbour = CostToPoint(current, neighbourCurrent);
+                fConsistent = gCostToNeigbour + hEstCostToEnd;
+                if (f.ContainsKey(neighbourCurrent))
+                {
+                    fE.Remove(neighbourCurrent);
+                    gE.Remove(neighbourCurrent);
+                    hE.Remove(neighbourCurrent);
+                }
+                f.Add(neighbourCurrent, float.MaxValue);
+                if (fConsistent <= (fE[neighbourCurrent]) || !(openList.Contains(neighbourCurrent)))
+                {
+                    gE.Add(neighbourCurrent, gCostToNeigbour);
+                    fE[neighbourCurrent] = g[neighbourCurrent];
+                    hE.Add(neighbourCurrent, ManhattanHeuristic(neighbourCurrent.x, neighbourCurrent.y, end.x, end.y));
+                    fE[neighbourCurrent] += h[neighbourCurrent];
+                    //finish Euclidean heuristic here^
+                }
+                else
+                {
+                    continue;
+                }
 
-    //    return null;
-    //}
+                if (!(openList.Contains(neighbourCurrent)))
+                {
+                    parentsE.Add(neighbourCurrent, current);
+                    openList.Add(neighbourCurrent);
+                }
+            }
+        }
+
+        return null;
+    }
 
     public List<Vector2> BreadthFirstSearch(Vector2 start, Vector2 end)
     {
@@ -521,12 +447,21 @@ public class PathfindingScript : MonoBehaviour {
         return null;
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
 
-        //startPoint = traversablePoints[startIndex];
-        startPoint = gms.GetChaserGridPos();
+        startPoint = traversablePoints[startIndex];
+        if (gameObject.name == "PathfinderChase")
+        {
+            startPoint = gms.GetChaserGridPos();
+        }
+        if (gameObject.name == "PathfinderEvade")
+        {
+            startPoint = gms.GetEvaderGridPos();
+        }
         endPoint = traversablePoints[endIndex];
 
         if (startPoint != endPoint)
@@ -534,42 +469,7 @@ public class PathfindingScript : MonoBehaviour {
             if (tempStart != startPoint)
             {
                 tempStart = startPoint;
-                //pathCheck = AStarSearch(startPoint, endPoint/*, ManhattanHeuristic*/);
-                //Debug.DrawLine(pathCheck[0], startPoint, Color.green, 1, false);
             }
-            //for (int y = 1; y < 16; y++)
-            //{
-            //    for (int x = 1; x < 16; x++)
-            //    {
-            //        //GameObject.Find("Cell x : " + x.ToString() + " y: " + y.ToString()).gameObject.transform.localPosition = new Vector3(1.5f * (x - 8), 1 * (y - 8));
-            //    }
-            //}
-            //Vector2 change = startPoint;
-            //if (Input.GetKeyDown(KeyCode.W))
-            //{
-            //    change = startPoint + new Vector2(0f, 1f);
-            //}
-            //if (Input.GetKeyDown(KeyCode.S))
-            //{
-            //    change = startPoint + new Vector2(0f, -1f);
-            //}
-            //if (Input.GetKeyDown(KeyCode.A))
-            //{
-            //    change = startPoint + new Vector2(-1.5f, 0f);
-            //}
-            //if (Input.GetKeyDown(KeyCode.D))
-            //{
-            //    change = startPoint + new Vector2(1.5f, 0f);
-            //}
-            //if (Input.GetKeyDown(KeyCode.R))
-            //{
-            //    endIndex = Random.Range(0, traversablePoints.Count - 1);
-            //    pathCheck = AStarSearch(startPoint, endPoint, ManhattanHeuristic);
-            //    Debug.DrawLine(pathCheck[0], startPoint, Color.green, 1, false);
-            //}
-            //if (!traversablePoints.Contains(change))
-            //    change = startPoint;
-            //startIndex = traversablePoints.IndexOf(change);
         }
     }
 

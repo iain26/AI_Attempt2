@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Monster
+  - Drops
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - 
   - 
   - Floor
-  - 
-  - 
+  - Evader
+  - Chaser
   - 
   - 
   - 

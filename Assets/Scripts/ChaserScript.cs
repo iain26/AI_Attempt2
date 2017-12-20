@@ -13,15 +13,18 @@ public class ChaserScript : MonoBehaviour
     public GameManagerScript gms;
 
     public PathfindingScript pfs;
+    [SerializeField]
     private List<Vector2> pathToTravel = new List<Vector2>();
 
-    Vector2 start;
+    Vector2 start = new Vector2(-7,-4);
     Vector2 pointCurrent;
 
     float ForceX = 0f;
     float ForceY = 0f;
     public bool canJump = true;
     bool jumped = false;
+
+    public GameObject Evader;
 
     // Use this for initialization
     void Start()
@@ -39,11 +42,6 @@ public class ChaserScript : MonoBehaviour
         {
             rb.AddForce(new Vector2(ForceX, rb.velocity.y + ForceY));
         }
-    }
-
-    private void FixedUpdate()
-    {
-        Movement();
         if (gms.GetChaserGridPos() != gms.GetEvaderGridPos())
         {
             if (pointCurrent.x > transform.position.x)
@@ -87,6 +85,11 @@ public class ChaserScript : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        Movement();
+    }
+
     bool GroundCheck()
     {
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
@@ -102,10 +105,6 @@ public class ChaserScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canJump)
-        {
-            //rb.velocity = new Vector2(rb.velocity.x, 0);
-        }
         if (gms.GetChaserGridPos() != gms.GetEvaderGridPos())
         {
             if (start != gms.GetChaserGridPos())
@@ -123,13 +122,9 @@ public class ChaserScript : MonoBehaviour
         else
         {
             print("Target Reached!!!");
+            Evader.transform.position = new Vector3(-1.5f, -1f);
         }
         canJump = GroundCheck();
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            if(canJump)
-            rb.AddForce(new Vector2(0, 350f));
-        }
+        
     }
 }

@@ -8,16 +8,19 @@ public class GameManagerScript : MonoBehaviour {
     private Vector2 chaserPointLocation;
 
     public Transform Evader;
-    public Vector2 evaderPointLocation = new Vector2(7.5f,-2f);
+    private Vector2 evaderPointLocation = new Vector2(9,2);
 
 
     public List<Vector2> collectable = new List<Vector2>();
 
     List<Vector2> accessiblePoints = new List<Vector2>();
 
-	// Use this for initialization
-	void Start () {
-        accessiblePoints = PathfindingScript.traversablePoints;
+    public PathfindingScript pfs;
+
+    // Use this for initialization
+    void Start () {
+        accessiblePoints = pfs.traversablePoints;
+        //evaderPointLocation = new Vector2(1.5F, 3.0F);
     }
 
     Vector2 GetNearestPoint(Vector2 pos)
@@ -39,8 +42,8 @@ public class GameManagerScript : MonoBehaviour {
     void SetEvaderGridPos()
     {
         Vector2 evaderCheckV = GetNearestPoint(Evader.position);
-        if (accessiblePoints.Contains(evaderCheckV)) { }
-        evaderPointLocation = GetNearestPoint(Evader.position);
+        if (accessiblePoints.Contains(evaderCheckV))
+            evaderPointLocation = GetNearestPoint(Evader.position);
     }
 
     public Vector2 GetChaserGridPos()
