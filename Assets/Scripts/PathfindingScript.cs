@@ -81,7 +81,27 @@ public class PathfindingScript : MonoBehaviour {
         //print(path)
     }
 
-    protected List<Vector2> BackTrackPath(Vector2 end)
+    //protected List<Vector2> BackTrackPath(Vector2 end)
+    //{
+    //    List<Vector2> path = new List<Vector2>();
+    //    if (end != null)
+    //    {
+    //        path.Add(end);
+    //        float green = 0f;
+    //        while (parents[end] != startPoint)
+    //        {
+    //            path.Add(parents[end]);
+    //            Debug.DrawLine(end, parents[end], new Color(255f - green, green, 0),1,false);
+    //            end = parents[end];
+    //            green += 255f / (float)path.Count;
+    //        }
+    //        // Reverse the path so the start node is at index 0
+    //        path.Reverse();
+    //    }
+    //    return path;
+    //}
+
+    protected List<Vector2> BackTrackPath(Vector2 end, Color color)
     {
         List<Vector2> path = new List<Vector2>();
         if (end != null)
@@ -91,7 +111,7 @@ public class PathfindingScript : MonoBehaviour {
             while (parents[end] != startPoint)
             {
                 path.Add(parents[end]);
-                Debug.DrawLine(end, parents[end], new Color(255f - green, green, 0),1,false);
+                Debug.DrawLine(end, parents[end], color, 1, false);
                 end = parents[end];
                 green += 255f / (float)path.Count;
             }
@@ -240,7 +260,7 @@ public class PathfindingScript : MonoBehaviour {
     //    return null;
     //}
 
-    public List<Vector2> AStarSearch(Vector2 start, Vector2 end/*, HeuristicDist hToUse*/)
+    public List<Vector2> AStarSearch(Vector2 start, Vector2 end, Color color/*, HeuristicDist hToUse*/)
     {
 
         parents.Clear();
@@ -298,7 +318,7 @@ public class PathfindingScript : MonoBehaviour {
 
             if (current == end)
             {
-                return BackTrackPath(end);
+                return BackTrackPath(end, color);
             }
 
             List<Vector2> traversableNeighbours = new List<Vector2>();
@@ -352,6 +372,118 @@ public class PathfindingScript : MonoBehaviour {
         return null;
     }
 
+    //public List<Vector2> AStarSearchEvader(Vector2 start, Vector2 end/*, HeuristicDist hToUse*/)
+    //{
+
+    //    parents.Clear();
+    //    f.Clear();
+    //    g.Clear();
+    //    h.Clear();
+
+    //    List<Vector2> openList = new List<Vector2>();
+    //    List<Vector2> closedList = new List<Vector2>();
+
+    //    openList.Add(start);
+    //    Vector2 current = start;
+    //    while (openList.Count > 0)
+    //    {
+
+    //        ////openList.Sort();
+    //        Vector2 checkFVector = startPoint;
+    //        float checkF = float.MaxValue;
+    //        Vector2 checkXVector = startPoint;
+    //        float checkX = float.MaxValue;
+    //        foreach (Vector2 point in openList)
+    //        {
+    //            //if(end.x > current.x)
+    //            //{
+    //            //    if(point.x < checkX)
+    //            //    {
+    //            //        checkX = point.x;
+    //            //        checkXVector = point;
+    //            //    }
+    //            //}
+    //            //if (end.x < current.x)
+    //            //{
+    //            //    if (point.x > checkX)
+    //            //    {
+    //            //        checkX = point.x;
+    //            //        checkXVector = point;
+    //            //    }
+    //            //}
+    //            if (f.ContainsKey(point))
+    //            {
+    //                if (f[point] < checkF)
+    //                {
+    //                    checkF = f[point];
+    //                    checkFVector = point;
+    //                }
+    //            }
+    //        }
+
+    //        current = checkFVector;
+
+    //        //Vector2 current = openList[0];
+
+    //        openList.Remove(current);
+    //        closedList.Add(current);
+
+    //        if (current == end)
+    //        {
+    //            return BackTrackPath(end);
+    //        }
+
+    //        List<Vector2> traversableNeighbours = new List<Vector2>();
+    //        traversableNeighbours = CheckNeighbouringPoints(current);
+
+    //        int numNeighbours = traversableNeighbours.Count;
+    //        //print(numNeighbours);
+
+    //        float fConsistent = float.MaxValue;
+    //        //int fIndex = 0;
+
+    //        for (int neighbourCurrentIndex = 0; neighbourCurrentIndex < numNeighbours; ++neighbourCurrentIndex)
+    //        {
+    //            Vector2 neighbourCurrent = traversableNeighbours[neighbourCurrentIndex];
+    //            if (closedList.Contains(neighbourCurrent))
+    //            {
+    //                continue;
+    //            }
+    //            //cost is distance as terrain is standard
+    //            float hEstCostToEnd = Vector2.Distance(neighbourCurrent, end);
+    //            float gCostToNeigbour = CostToPoint(current, neighbourCurrent);
+    //            fConsistent = gCostToNeigbour + hEstCostToEnd;
+    //            if (f.ContainsKey(neighbourCurrent))
+    //            {
+    //                f.Remove(neighbourCurrent);
+    //                g.Remove(neighbourCurrent);
+    //                h.Remove(neighbourCurrent);
+    //            }
+    //            f.Add(neighbourCurrent, float.MaxValue);
+    //            if (fConsistent <= (f[neighbourCurrent]) || !(openList.Contains(neighbourCurrent)))
+    //            {
+    //                g.Add(neighbourCurrent, gCostToNeigbour);
+    //                f[neighbourCurrent] = g[neighbourCurrent];
+    //                h.Add(neighbourCurrent, /*hToUse*/ManhattanHeuristic(neighbourCurrent.x, neighbourCurrent.y, end.x, end.y));
+    //                f[neighbourCurrent] += h[neighbourCurrent];
+    //                //finish Euclidean heuristic here^
+    //            }
+    //            else
+    //            {
+    //                continue;
+    //            }
+
+    //            if (!(openList.Contains(neighbourCurrent)))
+    //            {
+    //                parents.Add(neighbourCurrent, current);
+    //                openList.Add(neighbourCurrent);
+    //            }
+    //        }
+    //    }
+
+    //    return null;
+    //}
+
     public List<Vector2> BreadthFirstSearch(Vector2 start, Vector2 end)
     {
         visited.Add(start, true);
@@ -365,7 +497,7 @@ public class PathfindingScript : MonoBehaviour {
 
             if (currentNode == end)
             {
-                return BackTrackPath(end);
+                return BackTrackPath(end, Color.blue);
             }
 
             List<Vector2> traversableNeighbours = new List<Vector2>();

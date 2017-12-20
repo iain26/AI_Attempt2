@@ -7,8 +7,11 @@ public class GameManagerScript : MonoBehaviour {
     public Transform Chaser;
     private Vector2 chaserPointLocation;
 
-
+    public Transform Evader;
     public Vector2 evaderPointLocation = new Vector2(7.5f,-2f);
+
+
+    public List<Vector2> collectable = new List<Vector2>();
 
     List<Vector2> accessiblePoints = new List<Vector2>();
 
@@ -33,19 +36,28 @@ public class GameManagerScript : MonoBehaviour {
             chaserPointLocation = GetNearestPoint(Chaser.position);
     }
 
+    void SetEvaderGridPos()
+    {
+        Vector2 evaderCheckV = GetNearestPoint(Evader.position);
+        if (accessiblePoints.Contains(evaderCheckV)) { }
+        evaderPointLocation = GetNearestPoint(Evader.position);
+    }
+
     public Vector2 GetChaserGridPos()
     {
+        //SetChaserGridPos();
         return chaserPointLocation;
     }
 
     public Vector2 GetEvaderGridPos()
     {
+        //SetEvaderGridPos();
         return evaderPointLocation;
     }
 
     // Update is called once per frame
     void Update () {
         SetChaserGridPos();
-
+        SetEvaderGridPos();
     }
 }

@@ -13,7 +13,7 @@ public class ChaserScript : MonoBehaviour
     public GameManagerScript gms;
 
     public PathfindingScript pfs;
-    public List<Vector2> pathToTravel = new List<Vector2>();
+    private List<Vector2> pathToTravel = new List<Vector2>();
 
     Vector2 start;
     Vector2 pointCurrent;
@@ -34,101 +34,7 @@ public class ChaserScript : MonoBehaviour
     void Movement(){
         //lateral speed of player
         float vel = rb.velocity.x;
-
-        bool moving = false;
-
-        //if (turnsToMonster == false)
-        //{
-        //    transform.localScale = new Vector2(1, 0.8f);
-        //}
-        //else if (turnsToMonster == true)
-        //{
-        //    transform.localScale = new Vector2(-1, 0.8f);
-        //}
-
         //checks if in motion
-        if (vel > 0 || vel < 0)
-        {
-            moving = true;
-        }
-        else
-        {
-            moving = false;
-        }
-
-        //sets the speed and acceleration based on direction and sensitivity of joystick
-        //if (hInput < 0)
-        //{
-        //    if (hInput < -deadZoneThreshold)
-        //    {
-        //        if (hInput > -crawlThreshold)
-        //        {
-        //            speedX = -crawlSpeed;
-        //            forceX = -crawlForce;
-        //        }
-        //        else if (hInput > -walkThreshold)
-        //        {
-        //            speedX = -walkSpeed;
-        //            forceX = -walkForce;
-        //        }
-        //        else if (hInput < -walkThreshold)
-        //        {
-        //            speedX = -runSpeed;
-        //            forceX = -runForce;
-        //        }
-        //    }
-        //}
-        //if (hInput > 0)
-        //{
-        //    if (hInput > deadZoneThreshold)
-        //    {
-        //        if (hInput < crawlThreshold)
-        //        {
-        //            speedX = crawlSpeed;
-        //            forceX = crawlForce;
-        //        }
-        //        else if (hInput < walkThreshold)
-        //        {
-        //            speedX = walkSpeed;
-        //            forceX = walkForce;
-        //        }
-        //        else if (hInput > walkThreshold)
-        //        {
-        //            speedX = runSpeed;
-        //            forceX = runForce;
-        //        }
-        //    }
-        //}
-
-
-
-        //switch (ForceX)
-        //{
-        //    case 7.5f:
-        //        if (vel < 0)
-        //        {
-        //                rb.velocity = new Vector2(0, rb.velocity.y);
-        //        }
-        //        break;
-        //    case -7.5f:
-        //        if (vel < 0)
-        //        {
-        //            rb.velocity = new Vector2(0, rb.velocity.y);
-        //        }
-        //        break;
-        //    case 0f:
-        //        rb.velocity = new Vector2(0, rb.velocity.y);
-        //        break;
-
-        //}
-
-        //if (vel > 0)
-        //{
-        //    if (hInput < -deadZoneThreshold)
-        //    {
-        //        rb.velocity = new Vector2(0, rb.velocity.y);
-        //    }
-        //}
         if (ForceX != 0)
         {
             rb.AddForce(new Vector2(ForceX, rb.velocity.y + ForceY));
@@ -205,7 +111,7 @@ public class ChaserScript : MonoBehaviour
             if (start != gms.GetChaserGridPos())
             {
                 start = gms.GetChaserGridPos();
-                pathToTravel = pfs.AStarSearch(gms.GetChaserGridPos(), gms.GetEvaderGridPos());
+                pathToTravel = pfs.AStarSearch(gms.GetChaserGridPos(), gms.GetEvaderGridPos(), Color.red);
                 pointCurrent = pathToTravel[0];
                 float dist = Vector2.Distance(pointCurrent, transform.position);
                 if (dist < 0.15f)
@@ -224,11 +130,6 @@ public class ChaserScript : MonoBehaviour
         {
             if(canJump)
             rb.AddForce(new Vector2(0, 350f));
-        }
-
-        if (gms.GetChaserGridPos() == gms.GetEvaderGridPos())
-        {
-            //rb.velocity = new Vector2(0f, rb.velocity.y);
         }
     }
 }

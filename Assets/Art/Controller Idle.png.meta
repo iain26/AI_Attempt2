@@ -1,0 +1,1493 @@
+fileFormatVersion: 2
+guid: dbeaf38983971034892f71674bf1a9e5
+timeCreated: 1513762830
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Controller Idle_0
+    21300002: Controller Idle_1
+    21300004: Controller Idle_2
+    21300006: Controller Idle_3
+    21300008: Controller Idle_4
+    21300010: Controller Idle_5
+    21300012: Controller Idle_6
+    21300014: Controller Idle_7
+    21300016: Controller Idle_8
+    21300018: Controller Idle_9
+    21300020: Controller Idle_10
+    21300022: Controller Idle_11
+    21300024: Controller Idle_12
+    21300026: Controller Idle_13
+    21300028: Controller Idle_14
+    21300030: Controller Idle_15
+    21300032: Controller Idle_16
+    21300034: Controller Idle_17
+    21300036: Controller Idle_18
+    21300038: Controller Idle_19
+    21300040: Controller Idle_20
+    21300042: Controller Idle_21
+    21300044: Controller Idle_22
+    21300046: Controller Idle_23
+    21300048: Controller Idle_24
+    21300050: Controller Idle_25
+    21300052: Controller Idle_26
+    21300054: Controller Idle_27
+    21300056: Controller Idle_28
+    21300058: Controller Idle_29
+    21300060: Controller Idle_30
+    21300062: Controller Idle_31
+    21300064: Controller Idle_32
+    21300066: Controller Idle_33
+    21300068: Controller Idle_34
+    21300070: Controller Idle_35
+    21300072: Controller Idle_36
+    21300074: Controller Idle_37
+    21300076: Controller Idle_38
+    21300078: Controller Idle_39
+    21300080: Controller Idle_40
+    21300082: Controller Idle_41
+    21300084: Controller Idle_42
+    21300086: Controller Idle_43
+    21300088: Controller Idle_44
+    21300090: Controller Idle_45
+    21300092: Controller Idle_46
+    21300094: Controller Idle_47
+    21300096: Controller Idle_48
+    21300098: Controller Idle_49
+    21300100: Controller Idle_50
+    21300102: Controller Idle_51
+    21300104: Controller Idle_52
+    21300106: Controller Idle_53
+    21300108: Controller Idle_54
+    21300110: Controller Idle_55
+    21300112: Controller Idle_56
+    21300114: Controller Idle_57
+    21300116: Controller Idle_58
+    21300118: Controller Idle_59
+    21300120: Controller Idle_60
+    21300122: Controller Idle_61
+    21300124: Controller Idle_62
+    21300126: Controller Idle_63
+    21300128: Controller Idle_64
+    21300130: Controller Idle_65
+    21300132: Controller Idle_66
+    21300134: Controller Idle_67
+    21300136: Controller Idle_68
+    21300138: Controller Idle_69
+    21300140: Controller Idle_70
+    21300142: Controller Idle_71
+    21300144: Controller Idle_72
+    21300146: Controller Idle_73
+    21300148: Controller Idle_74
+    21300150: Controller Idle_75
+    21300152: Controller Idle_76
+    21300154: Controller Idle_77
+    21300156: Controller Idle_78
+    21300158: Controller Idle_79
+    21300160: Controller Idle_80
+    21300162: Controller Idle_81
+    21300164: Controller Idle_82
+    21300166: Controller Idle_83
+    21300168: Controller Idle_84
+    21300170: Controller Idle_85
+    21300172: Controller Idle_86
+    21300174: Controller Idle_87
+    21300176: Controller Idle_88
+    21300178: Controller Idle_89
+    21300180: Controller Idle_90
+    21300182: Controller Idle_91
+    21300184: Controller Idle_92
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 500
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Controller Idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8730
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_1
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 8730
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_2
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 8730
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_3
+      rect:
+        serializedVersion: 2
+        x: 2898
+        y: 8730
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_4
+      rect:
+        serializedVersion: 2
+        x: 3864
+        y: 8730
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_5
+      rect:
+        serializedVersion: 2
+        x: 4830
+        y: 8730
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_6
+      rect:
+        serializedVersion: 2
+        x: 5796
+        y: 8730
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_7
+      rect:
+        serializedVersion: 2
+        x: 6762
+        y: 8730
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_8
+      rect:
+        serializedVersion: 2
+        x: 7728
+        y: 8730
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_9
+      rect:
+        serializedVersion: 2
+        x: 8694
+        y: 8730
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7760
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_11
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 7760
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_12
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 7760
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_13
+      rect:
+        serializedVersion: 2
+        x: 2898
+        y: 7760
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_14
+      rect:
+        serializedVersion: 2
+        x: 3864
+        y: 7760
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_15
+      rect:
+        serializedVersion: 2
+        x: 4830
+        y: 7760
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_16
+      rect:
+        serializedVersion: 2
+        x: 5796
+        y: 7760
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_17
+      rect:
+        serializedVersion: 2
+        x: 6762
+        y: 7760
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_18
+      rect:
+        serializedVersion: 2
+        x: 7728
+        y: 7760
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_19
+      rect:
+        serializedVersion: 2
+        x: 8694
+        y: 7760
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6790
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_21
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 6790
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_22
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 6790
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_23
+      rect:
+        serializedVersion: 2
+        x: 2898
+        y: 6790
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_24
+      rect:
+        serializedVersion: 2
+        x: 3864
+        y: 6790
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_25
+      rect:
+        serializedVersion: 2
+        x: 4830
+        y: 6790
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_26
+      rect:
+        serializedVersion: 2
+        x: 5796
+        y: 6790
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_27
+      rect:
+        serializedVersion: 2
+        x: 6762
+        y: 6790
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_28
+      rect:
+        serializedVersion: 2
+        x: 7728
+        y: 6790
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_29
+      rect:
+        serializedVersion: 2
+        x: 8694
+        y: 6790
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5820
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_31
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 5820
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_32
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 5820
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_33
+      rect:
+        serializedVersion: 2
+        x: 2898
+        y: 5820
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_34
+      rect:
+        serializedVersion: 2
+        x: 3864
+        y: 5820
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_35
+      rect:
+        serializedVersion: 2
+        x: 4830
+        y: 5820
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_36
+      rect:
+        serializedVersion: 2
+        x: 5796
+        y: 5820
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_37
+      rect:
+        serializedVersion: 2
+        x: 6762
+        y: 5820
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_38
+      rect:
+        serializedVersion: 2
+        x: 7728
+        y: 5820
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_39
+      rect:
+        serializedVersion: 2
+        x: 8694
+        y: 5820
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4850
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_41
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 4850
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_42
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 4850
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_43
+      rect:
+        serializedVersion: 2
+        x: 2898
+        y: 4850
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_44
+      rect:
+        serializedVersion: 2
+        x: 3864
+        y: 4850
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_45
+      rect:
+        serializedVersion: 2
+        x: 4830
+        y: 4850
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_46
+      rect:
+        serializedVersion: 2
+        x: 5796
+        y: 4850
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_47
+      rect:
+        serializedVersion: 2
+        x: 6762
+        y: 4850
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_48
+      rect:
+        serializedVersion: 2
+        x: 7728
+        y: 4850
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_49
+      rect:
+        serializedVersion: 2
+        x: 8694
+        y: 4850
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3880
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_51
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 3880
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_52
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 3880
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_53
+      rect:
+        serializedVersion: 2
+        x: 2898
+        y: 3880
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_54
+      rect:
+        serializedVersion: 2
+        x: 3864
+        y: 3880
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_55
+      rect:
+        serializedVersion: 2
+        x: 4830
+        y: 3880
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_56
+      rect:
+        serializedVersion: 2
+        x: 5796
+        y: 3880
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_57
+      rect:
+        serializedVersion: 2
+        x: 6762
+        y: 3880
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_58
+      rect:
+        serializedVersion: 2
+        x: 7728
+        y: 3880
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_59
+      rect:
+        serializedVersion: 2
+        x: 8694
+        y: 3880
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2910
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_61
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 2910
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_62
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 2910
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_63
+      rect:
+        serializedVersion: 2
+        x: 2898
+        y: 2910
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_64
+      rect:
+        serializedVersion: 2
+        x: 3864
+        y: 2910
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_65
+      rect:
+        serializedVersion: 2
+        x: 4830
+        y: 2910
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_66
+      rect:
+        serializedVersion: 2
+        x: 5796
+        y: 2910
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_67
+      rect:
+        serializedVersion: 2
+        x: 6762
+        y: 2910
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_68
+      rect:
+        serializedVersion: 2
+        x: 7728
+        y: 2910
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_69
+      rect:
+        serializedVersion: 2
+        x: 8694
+        y: 2910
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1940
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_71
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 1940
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_72
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 1940
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_73
+      rect:
+        serializedVersion: 2
+        x: 2898
+        y: 1940
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_74
+      rect:
+        serializedVersion: 2
+        x: 3864
+        y: 1940
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_75
+      rect:
+        serializedVersion: 2
+        x: 4830
+        y: 1940
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_76
+      rect:
+        serializedVersion: 2
+        x: 5796
+        y: 1940
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_77
+      rect:
+        serializedVersion: 2
+        x: 6762
+        y: 1940
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_78
+      rect:
+        serializedVersion: 2
+        x: 7728
+        y: 1940
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_79
+      rect:
+        serializedVersion: 2
+        x: 8694
+        y: 1940
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 970
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_81
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 970
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_82
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 970
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_83
+      rect:
+        serializedVersion: 2
+        x: 2898
+        y: 970
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_84
+      rect:
+        serializedVersion: 2
+        x: 3864
+        y: 970
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_85
+      rect:
+        serializedVersion: 2
+        x: 4830
+        y: 970
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_86
+      rect:
+        serializedVersion: 2
+        x: 5796
+        y: 970
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_87
+      rect:
+        serializedVersion: 2
+        x: 6762
+        y: 970
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_88
+      rect:
+        serializedVersion: 2
+        x: 7728
+        y: 970
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_89
+      rect:
+        serializedVersion: 2
+        x: 8694
+        y: 970
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_91
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 0
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controller Idle_92
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 0
+        width: 966
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
