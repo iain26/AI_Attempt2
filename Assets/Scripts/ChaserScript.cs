@@ -16,7 +16,7 @@ public class ChaserScript : MonoBehaviour
     [SerializeField]
     private List<Vector2> pathToTravel = new List<Vector2>();
 
-    Vector2 start = new Vector2(-7,-4);
+    Vector2 start;
     Vector2 pointCurrent;
 
     float ForceX = 0f;
@@ -24,14 +24,26 @@ public class ChaserScript : MonoBehaviour
     public bool canJump = true;
     bool jumped = false;
 
+    bool started = false;
+
     public GameObject Evader;
+
+    public bool ShowLines = true;
 
     // Use this for initialization
     void Start()
     {
         pathToTravel.Add(transform.position);
         pointCurrent = pathToTravel[0];
-        whatIsGround = 1 << LayerMask.NameToLayer("Floor");
+        whatIsGround = 1 << LayerMask.NameToLayer("Chaser");
+        StartCoroutine(JustStarted());
+    }
+
+    IEnumerator JustStarted()
+    {
+        yield return new WaitForSeconds(1f);
+        started = true;
+        yield return 0;
     }
 
     void Movement(){
@@ -58,10 +70,20 @@ public class ChaserScript : MonoBehaviour
                 {
                     if (!jumped)
                     {
-                        jumped = true;
-                        StartCoroutine(Wait());
-                        rb.velocity = new Vector2(0, rb.velocity.y);
-                        rb.AddForce(new Vector2(0f, 300f));
+                        float jumpThres = 1.4f;
+                        Vector2 dir = new Vector2(gms.GetChaserGridPos().x - pointCurrent.x, gms.GetChaserGridPos().y - pointCurrent.y);
+                        if (dir.x > 0 || dir.x < 0 && dir.y > 0 || dir.y < 0)
+                        {
+                            jumpThres = 1.9f;
+                        }
+                        float Dist = Vector2.Distance(transform.position, pointCurrent);
+                        if (Dist < jumpThres)
+                        {
+                            jumped = true;
+                            StartCoroutine(Wait());
+                            rb.velocity = new Vector2(0, rb.velocity.y);
+                            rb.AddForce(new Vector2(0f, 300f));
+                        }
                     }
                 }
             }
@@ -105,24 +127,46 @@ public class ChaserScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gms.GetChaserGridPos() != gms.GetEvaderGridPos())
+        bool evaderSafe = gms.accessiblePointsChaser.Contains(gms.GetEvaderGridPos());
+        if (evaderSafe)
         {
-            if (start != gms.GetChaserGridPos())
+            if (gms.GetChaserGridPos() != gms.GetEvaderGridPos())
             {
-                start = gms.GetChaserGridPos();
-                pathToTravel = pfs.AStarSearch(gms.GetChaserGridPos(), gms.GetEvaderGridPos(), Color.red);
-                pointCurrent = pathToTravel[0];
-                float dist = Vector2.Distance(pointCurrent, transform.position);
-                if (dist < 0.15f)
+                if (start != gms.GetChaserGridPos())
                 {
+                    start = gms.GetChaserGridPos();
+                    pathToTravel = pfs.DStarSearch(gms.GetChaserGridPos(), gms.GetEvaderGridPos(), Color.red, ShowLines);
                     pointCurrent = pathToTravel[0];
+                }
+            }
+            else
+            {
+                if (started)
+                {
+                    print("Target Reached!!!");
+                    Evader.transform.position = new Vector3(-1.5f, -1f);
+                    Evader.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
                 }
             }
         }
         else
         {
-            print("Target Reached!!!");
-            Evader.transform.position = new Vector3(-1.5f, -1f);
+            if (gms.GetChaserGridPos() != new Vector2(9f, 6f))
+            {
+                if (start != gms.GetChaserGridPos())
+                {
+                    start = gms.GetChaserGridPos();
+                    pathToTravel = pfs.DStarSearch(gms.GetChaserGridPos(), new Vector2(9f, 6f), Color.white, ShowLines);
+                    pointCurrent = pathToTravel[0];
+                }
+            }
+            else
+            {
+                if (started)
+                {
+                    print("Target Reached!!!");
+                }
+            }
         }
         canJump = GroundCheck();
         

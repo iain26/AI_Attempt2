@@ -13,28 +13,33 @@ public class EvaderScript : MonoBehaviour {
     public GameManagerScript gms;
 
     public PathfindingScript pfs;
-    [SerializeField]
-    private List<Vector2> pathToTravel = new List<Vector2>();
+    //[SerializeField]
+    public List<Vector2> pathToTravel = new List<Vector2>();
+
     Vector2 start;
     Vector2 pointCurrent;
 
-
     GameObject nextCollect;
-
     bool deposit = false;
+    Vector2 destination;
 
     float ForceX = 0f;
     float ForceY = 0f;
     public bool canJump = true;
     bool jumped = false;
+    bool waited = false;
+
+    public Transform Chaser;
 
     public List<GameObject> collectables = new List<GameObject>();
+
+    public bool ShowLines = true;
 
     void Start()
     {
         pathToTravel.Add(transform.position);
         pointCurrent = pathToTravel[0];
-        whatIsGround = 1 << LayerMask.NameToLayer("Floor");
+        whatIsGround = 1 << LayerMask.NameToLayer("Evader");
         float distCollect = float.MaxValue;
         foreach (GameObject drop in collectables)
         {
@@ -42,6 +47,7 @@ public class EvaderScript : MonoBehaviour {
             {
                 distCollect = Vector2.Distance(transform.position, drop.transform.position);
                 nextCollect = drop;
+                destination = nextCollect.transform.position;
             }
         }
     }
@@ -55,15 +61,29 @@ public class EvaderScript : MonoBehaviour {
         {
             rb.AddForce(new Vector2(ForceX, rb.velocity.y + ForceY));
         }
-        if (gms.GetEvaderGridPos() != new Vector2(nextCollect.transform.position.x, nextCollect.transform.position.y))
+        if(ForceX > 0)
+        {
+            if(vel > ForceX)
+            {
+                rb.velocity = new Vector2(ForceX, rb.velocity.y);
+            }
+        }
+        if (ForceX < 0)
+        {
+            if (vel < ForceX)
+            {
+                rb.velocity = new Vector2(ForceX, rb.velocity.y);
+            }
+        }
+        if (gms.GetEvaderGridPos() != destination)
         {
             if (pointCurrent.x > transform.position.x)
             {
-                ForceX = 8.5f;
+                ForceX = 8.0f;
             }
             else if (pointCurrent.x < transform.position.x)
             {
-                ForceX = -8.5f;
+                ForceX = -8.0f;
             }
             if (pointCurrent.y > gms.GetEvaderGridPos().y)
             {
@@ -71,17 +91,27 @@ public class EvaderScript : MonoBehaviour {
                 {
                     if (!jumped)
                     {
-                        jumped = true;
-                        StartCoroutine(Wait());
-                        rb.velocity = new Vector2(0, rb.velocity.y);
-                        rb.AddForce(new Vector2(0f, 300f));
+                        float jumpThres = 1.4f;
+                        Vector2 dir = new Vector2(gms.GetEvaderGridPos().x - pointCurrent.x, gms.GetEvaderGridPos().y - pointCurrent.y);
+                        if (dir.x > 0 || dir.x < 0 && dir.y > 0 || dir.y < 0)
+                        {
+                            jumpThres = 1.9f;
+                        }
+                        float Dist = Vector2.Distance(transform.position, pointCurrent);
+                        if (Dist < jumpThres)
+                        {
+                            jumped = true;
+                            StartCoroutine(Wait());
+                            rb.velocity = new Vector2(0,0);
+                            rb.AddForce(new Vector2(0f, 300f));
+                        }
                     }
                 }
             }
         }
         else
         {
-            float dist = Vector2.Distance(new Vector2(nextCollect.transform.position.x, nextCollect.transform.position.y), transform.position);
+            float dist = Vector2.Distance(destination, transform.position);
             if (dist < 0.5f)
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
@@ -110,69 +140,73 @@ public class EvaderScript : MonoBehaviour {
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         jumped = false;
+        yield return 0;
+    }
+
+    IEnumerator RespawnDrop(GameObject drop)
+    {
+        yield return new WaitForSeconds(16f);
+        drop.SetActive(true);
+        collectables.Add(drop);
         yield return 0;
     }
 
     void Update()
     {
         float distCollect = float.MaxValue;
-        foreach (GameObject drop in collectables)
-        {
-            if (distCollect > Vector2.Distance(transform.position, drop.transform.position))
+            foreach (GameObject drop in collectables)
             {
-                distCollect = Vector2.Distance(transform.position, drop.transform.position);
-                nextCollect = drop;
-            }
-        }
-        //if (!deposit)
-        {
-            if (gms.GetEvaderGridPos() != new Vector2(nextCollect.transform.position.x, nextCollect.transform.position.y))
-            {
-                print(start);
-                if (start != gms.GetEvaderGridPos())
+                if (distCollect > Vector2.Distance(transform.position, drop.transform.position))
                 {
-                    start = gms.GetEvaderGridPos();
-                    pathToTravel = pfs.AStarSearch(gms.GetEvaderGridPos(), new Vector2(nextCollect.transform.position.x, nextCollect.transform.position.y), Color.blue);
-                    pointCurrent = pathToTravel[0];
-                    float dist = Vector2.Distance(pointCurrent, transform.position);
-                    if (dist < 0.15f)
+                    distCollect = Vector2.Distance(transform.position, drop.transform.position);
+                    nextCollect = drop;
+                }
+            }
+            if (!deposit)
+            {
+                destination = nextCollect.transform.position;
+                if (gms.GetEvaderGridPos() != destination)
+                {
+                    if (start != gms.GetEvaderGridPos())
                     {
-                        pointCurrent = pathToTravel[0];
+                        start = gms.GetEvaderGridPos();
+                    if (pfs.traversablePoints.Contains(destination))
+                    {
+                        pathToTravel = pfs.DStarSearch(gms.GetEvaderGridPos(), destination, Color.cyan, ShowLines);
                     }
+                    pointCurrent = pathToTravel[0];
+                    }
+                }
+                else
+                {
+                    collectables.Remove(nextCollect);
+                    nextCollect.SetActive(false);
+                    StartCoroutine(RespawnDrop(nextCollect));
+                    deposit = true;
+                    print("Collectable Reached!!!");
                 }
             }
             else
             {
-                collectables.Remove(nextCollect);
-                nextCollect.SetActive(false);
-                deposit = true;
-                print("Collectable Reached!!!");
+                destination = new Vector2(-1.5f, -1f);
+                if (gms.GetEvaderGridPos() != destination)
+                {
+                    if (start != gms.GetEvaderGridPos())
+                    {
+                        start = gms.GetEvaderGridPos();
+                        pathToTravel = pfs.DStarSearch(gms.GetEvaderGridPos(), destination, Color.magenta, ShowLines);
+                        pointCurrent = pathToTravel[0];
+                    }
+                }
+                else
+                {
+                    deposit = false;
+                    print("Deposit Reached!!!");
+                }
             }
-        }
-        //else
-        //{
-        //    if (gms.GetEvaderGridPos() != new Vector2(-1.5f, -1f))
-        //    {
-        //        if (start != gms.GetEvaderGridPos())
-        //        {
-        //            start = gms.GetEvaderGridPos();
-        //            pathToTravel = pfs.AStarSearch(gms.GetEvaderGridPos(), new Vector2(-1.5f, -1f), Color.blue);
-        //            pointCurrent = pathToTravel[0];
-        //            float dist = Vector2.Distance(pointCurrent, transform.position);
-        //            if (dist < 0.15f)
-        //            {
-        //                pointCurrent = pathToTravel[0];
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        deposit = false;
-        //        print("Deposit Reached!!!");
-        //    }
-        //}
-        canJump = GroundCheck();
+        
+            canJump = GroundCheck();
     }
 }
